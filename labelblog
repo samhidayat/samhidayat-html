@@ -1,0 +1,40 @@
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<style type="text/css">
+#toc-outer { background:#fff  no-repeat 50% 50%; color:black; font:normal 11px/14px Arial,Sans-Serif; height:auto; margin:0 auto; overflow:hidden; padding:0; text-align:left; }
+#loadingscript { background:transparent url(' http://3.bp.blogspot.com/-Z0w4M80kNoE/Tz4_RrLC4fI/AAAAAAAACJY/2mQ2yk5hCdU/s1600/loading.gif' ) no-repeat 50% 45%; font-weight:bold; font-size:20px; height:345px; padding:30px 0; text-align:center; text-indent:-99999px; }
+.itemposts { background-color:#fff; border:1px solid #ccc; float:right; height:130px; margin:0 1% 5px; overflow:hidden; position:relative; padding:1%; width:45%; }
+.itemposts h6 { border-bottom:1px solid #333; color:#333; font:bold 11px/16px Sans-Serif; height:15px; margin:0 0 5px; overflow:hidden; padding:2px 6px !important; text-transform:none; }
+.itemposts h6 a:hover { color:#AD3000; text-decoration:none; }
+.itemposts img { background-color:#fff; border:1px solid #ccc; float:left; height:75px; margin:0 7px 5px 0; padding:3px; width:75px; z-indent:99999px; }
+.itemposts .iteminside {}
+.itemposts .itemfoot { border-top:1px solid #333; padding:3px; clear:both; background-color:#fff; color:333; overflow:hidden; }
+.itemposts .itemfoot a.itemrmore { color:#333; float:right; font-weight:bold; text-decoration:none; }
+.itemposts .itemfoot a.itemrmore:hover { text-decoration:underline; }
+#itempager { clear:both; padding:10px 0; }
+#halaman,#totalposts { color:#000; display:block; font:bold 10px Verdana,Arial,Sans-Serif; margin-bottom:10px; text-align:center; padding:0; }
+#halaman span,#halaman a { background-color:#666; color:#fff; display:inline; margin:0 1px; padding:3px 5px; text-indent:0; text-decoration:none; }
+#halaman a:hover { background-color:#333; }
+#halaman span.actual { background-color:black; }
+#halaman span.hidden { display:none; }
+</style>
+<script type="text/javascript">
+//<![CDATA[
+var showPostDate   = true,
+    showComments   = true,
+    idMode         = true,
+    sortByLabel    = true,
+    labelSorter    = "Blog",
+    loadingText    = "Loading...",
+    totalPostLabel = "8",
+    jumpPageLabel  = "10",
+    commentsLabel  = "Komentar",
+    rmoreText      = "Selengkapnya ►",
+    prevText       = "Prev",
+    nextText       = "Next",
+    siteUrl        = "http://www.infoalya.com/",
+    postsperpage   = 8,
+    numchars       = 150,
+    imgBlank       = "http://2.bp.blogspot.com/-h3nR4rhdgKY/VdsoaaVAKyI/AAAAAAAAHGs/6zGbptjAnfI/s1600/download.jpg";
+//]]>
+</script>
+<script src="https://cdn.rawgit.com/samhidayat/javas/master/dafisiperlabel.js"></script></div>
