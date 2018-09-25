@@ -1,0 +1,342 @@
+<div dir="ltr" style="text-align: left;" trbidi="on"> <center><object border="0" classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" height="480" id="obj1" width="480">  <param name="movie" value="http://www.2createawebsite.com/build/col.swf"><param name="quality" value="High"><embed src="http://www.2createawebsite.com/build/col.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="obj1" width="485" height="485" quality="High"> </embed> </object> </center>
+<div class="success"><div style="text-align: center;"><span style="font-size: large;">Klik salah satu warna dibawah ini untuk mendapatkan kode warna</span></div></div><script language="javascript">
+function Barva(koda)
+{
+document.getElementById("vzorec").bgColor=koda;
+document.hcc.barva.value=koda.toUpperCase();
+document.hcc.barva.select();
+}
+function BarvaDruga(koda)
+{
+document.getElementById("vzorec2").bgColor=koda;
+document.hcc.Barva2.value=koda.toUpperCase();
+document.hcc.Barva2.select();
+}
+</script>  <script type="text/javascript">
+
+var hue;
+var picker;
+//var gLogger;
+var dd1, dd2;
+var r, g, b;
+
+function init() {
+if (typeof(ygLogger) != "undefined")
+ygLogger.init(document.getElementById("logDiv"));
+pickerInit();
+//ddcolorposter.fillcolorbox("colorfield1", "colorbox1") //PREFILL "colorbox1" with hex value from "colorfield1"
+//ddcolorposter.fillcolorbox("colorfield2", "colorbox2") //PREFILL "colorbox1" with hex value from "colorfield1"
+}
+
+// Picker ---------------------------------------------------------
+
+function pickerInit() {
+hue = YAHOO.widget.Slider.getVertSlider("hueBg", "hueThumb", 0, 180);
+hue.onChange = function(newVal) { hueUpdate(newVal); };
+
+picker = YAHOO.widget.Slider.getSliderRegion("pickerDiv", "selector", 0, 180, 0, 180);
+picker.onChange = function(newX, newY) { pickerUpdate(newX, newY); };
+
+hueUpdate();
+
+dd1 = new YAHOO.util.DD("pickerPanel");
+dd1.setHandleElId("pickerHandle");
+dd1.endDrag = function(e) {
+// picker.thumb.resetConstraints();
+// hue.thumb.resetConstraints();
+};
+}
+
+executeonload(init);
+
+function pickerUpdate(newX, newY) {
+pickerSwatchUpdate();
+}
+
+
+function hueUpdate(newVal) {
+
+var h = (180 - hue.getValue()) / 180;
+if (h == 1) { h = 0; }
+
+var a = YAHOO.util.Color.hsv2rgb( h, 1, 1);
+
+document.getElementById("pickerDiv").style.backgroundColor =
+"rgb(" + a[0] + ", " + a[1] + ", " + a[2] + ")";
+
+pickerSwatchUpdate();
+}
+
+function pickerSwatchUpdate() {
+var h = (180 - hue.getValue());
+if (h == 180) { h = 0; }
+document.getElementById("pickerhval").value = (h*2);
+
+h = h / 180;
+
+var s = picker.getXValue() / 180;
+document.getElementById("pickersval").value = Math.round(s * 100);
+
+var v = (180 - picker.getYValue()) / 180;
+document.getElementById("pickervval").value = Math.round(v * 100);
+
+var a = YAHOO.util.Color.hsv2rgb( h, s, v );
+
+document.getElementById("pickerSwatch").style.backgroundColor =
+"rgb(" + a[0] + ", " + a[1] + ", " + a[2] + ")";
+
+document.getElementById("pickerrval").value = a[0];
+document.getElementById("pickergval").value = a[1];
+document.getElementById("pickerbval").value = a[2];
+var hexvalue = document.getElementById("pickerhexval").value ='#'+
+YAHOO.util.Color.rgb2hex(a[0], a[1], a[2]);
+ddcolorposter.initialize(a[0], a[1], a[2], hexvalue)
+if (hexvalue!="#FFFFFF") document.getElementById("pickerhexval").select();
+}
+
+</script><!--[if gte IE 5.5000]> <script type="text/javascript">
+
+function correctPNG() // correctly handle PNG transparency in Win IE 5.5 or higher.
+{
+for(var i=0; i<document.images.length; i++)
+{
+var img = document.images[i]
+var imgName = img.src.toUpperCase()
+if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+{
+var imgID = (img.id) ? "id='" + img.id + "' " : ""
+var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+var imgStyle = "display:inline-block;" + img.style.cssText
+if (img.align == "left") imgStyle = "float:left;" + imgStyle
+if (img.align == "right") imgStyle = "float:right;" + imgStyle
+if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+var strNewHTML = "<span " + imgID + imgClass + imgTitle
++ " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
++ "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
++ "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>"
+img.outerHTML = strNewHTML
+i = i-1
+}
+}
+}
+
+YAHOO.util.Event.addListener(window, "load", correctPNG);
+
+</script> <![endif]-->    <center><form id="hcc" name="hcc"><table align="center" border="1" bordercolor="#cccccc" cellpadding="0" cellspacing="0" style="border-collapse: collapse;"><tbody>
+<tr><td><table align="center" border="0" cellpadding="0" cellspacing="1" style="width: 375px;"><tbody>
+<tr height="24"><td bgcolor="#190707" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2a0a0a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#3b0b0b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#610b0b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#8a0808" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#b40404" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#df0101" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ff0000" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fe2e2e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fa5858" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f78181" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f5a9a9" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f6cece" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f8e0e0" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fbefef" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#191007" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2a1b0a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#3b240b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#61380b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#8a4b08" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#b45f04" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#df7401" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ff8000" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fe9a2e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#faac58" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f7be81" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f5d0a9" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f6e3ce" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f8ece0" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fbf5ef" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#181907" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#292a0a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#393b0b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#5e610b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#868a08" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#aeb404" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#d7df01" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ffff00" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f7fe2e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f4fa58" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f3f781" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f2f5a9" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f5f6ce" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f7f8e0" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fbfbef" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#101907" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#1b2a0a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#243b0b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#38610b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#4b8a08" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#5fb404" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#74df00" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#80ff00" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#9afe2e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#acfa58" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#bef781" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#d0f5a9" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e3f6ce" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ecf8e0" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f5fbef" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#071907" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0a2a0a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b3b0b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b610b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#088a08" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#04b404" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#01df01" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#00ff00" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2efe2e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#58fa58" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#81f781" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#a9f5a9" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#cef6ce" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e0f8e0" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#effbef" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#071910" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0a2a1b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b3b24" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b6138" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#088a4b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#04b45f" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#01df74" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#00ff80" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2efe9a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#58faac" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#81f7be" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#a9f5d0" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#cef6e3" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e0f8ec" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#effbf5" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#071918" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0a2a29" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b3b39" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b615e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#088a85" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#04b4ae" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#01dfd7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#00ffff" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2efef7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#58faf4" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#81f7f3" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#a9f5f2" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#cef6f5" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e0f8f7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#effbfb" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#071019" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0a1b2a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b243b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b3861" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#084b8a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#045fb4" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0174df" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0080ff" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2e9afe" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#58acfa" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#81bef7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#a9d0f5" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#cee3f6" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e0ecf8" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#eff5fb" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#070719" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0a0a2a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b0b3b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b0b61" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#08088a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0404b4" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0101df" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0000ff" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2e2efe" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#5858fa" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#8181f7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#a9a9f5" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#cecef6" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e0e0f8" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#efeffb" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#100719" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#1b0a2a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#240b3b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#380b61" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#4b088a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#5f04b4" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#7401df" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#8000ff" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#9a2efe" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ac58fa" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#be81f7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#d0a9f5" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e3cef6" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ece0f8" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f5effb" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"> <td bgcolor="#190718" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2a0a29" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#3b0b39" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#610b5e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#8a0886" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#b404ae" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#df01d7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ff00ff" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fe2ef7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fa58f4" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f781f3" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f5a9f2" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f6cef5" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f8e0f7" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fbeffb" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#190710" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2a0a1b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#3b0b24" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#610b38" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#8a084b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#b4045f" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#df0174" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ff0080" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fe2e9a" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fa58ac" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f781be" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f5a9d0" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f6cee3" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f8e0ec" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#fbeff5" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+<tr height="24"><td bgcolor="#000000" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#0b0b0b" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#151515" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#1c1c1c" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#2e2e2e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#424242" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#585858" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#6e6e6e" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#848484" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#a4a4a4" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#bdbdbd" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#d8d8d8" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#e6e6e6" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#f2f2f2" onclick="Barva(this.bgColor)"><br />
+</td><td bgcolor="#ffffff" onclick="Barva(this.bgColor)"><br />
+</td></tr>
+</tbody></table></td></tr>
+</tbody></table><table align="center" border="0" cellpadding="0" cellspacing="2"><tbody>
+<tr height="24"><td height="24" id="vzorec" width="24"><br />
+</td><td valign="bottom">kode warna : <input id="barva" maxlength="7" name="barva" size="9" style="font-family: Verdana; font-size: 12px; font-weight: bold; height: 16px; width: 74px;" type="text" /></td></tr>
+</tbody></table></form></center></div>
+<br/>
+<center><a href="http://www.infoalya.com/p/flat-ui-color.html" target="_blank" class="tombol external">Flat UI Color disini</a></center><br/><br/><br/><br/>
